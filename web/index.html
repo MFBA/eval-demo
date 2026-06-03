@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Northstar RAG Test Bench</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Northstar Outfitters Eval Lab</p>
+          <h1 id="page-title">RAG test bench</h1>
+          <p class="lede">Break the support bot on camera, inspect what it retrieved, and compare the answer against sneaky policy edge cases.</p>
+        </div>
+        <div class="status-panel" aria-live="polite">
+          <span class="status-dot"></span>
+          <div>
+            <p class="status-label">LM Studio hookup</p>
+            <p class="status-value" id="configText">Loading...</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <form class="tester" id="questionForm">
+          <div class="toolbar">
+            <div>
+              <label for="question">Customer question</label>
+              <p>Pick a spicy case or write your own.</p>
+            </div>
+            <div class="controls">
+              <label class="inline-control" for="topK">
+                Context
+                <input id="topK" name="topK" type="number" min="1" max="8" value="4" />
+              </label>
+              <button class="icon-button" id="retrieveOnly" type="button" title="Inspect retrieval only">?</button>
+            </div>
+          </div>
+          <textarea id="question" name="question" rows="5" placeholder="Can I get a refund after 40 days?"></textarea>
+          <div class="actions">
+            <button type="submit">Run the test</button>
+            <button class="secondary" id="clearButton" type="button">Clear</button>
+          </div>
+        </form>
+
+        <aside class="cases" aria-labelledby="cases-title">
+          <div class="panel-heading">
+            <h2 id="cases-title">Breaker questions</h2>
+            <span id="caseCount">0</span>
+          </div>
+          <div class="case-list" id="caseList"></div>
+        </aside>
+      </section>
+
+      <section class="results" aria-live="polite">
+        <article class="answer-card">
+          <div class="panel-heading">
+            <h2>Answer</h2>
+            <span id="modeBadge">Ready</span>
+          </div>
+          <div class="answer" id="answerOutput">Run a question to see the assistant response.</div>
+        </article>
+
+        <article class="context-card">
+          <div class="panel-heading">
+            <h2>Retrieved context</h2>
+            <span id="sectionCount">0 sections</span>
+          </div>
+          <div class="section-pills" id="sectionPills"></div>
+          <pre id="contextOutput">No context loaded.</pre>
+        </article>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

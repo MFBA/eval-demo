@@ -43,6 +43,26 @@ LM Studio usually accepts a placeholder API key, so this project defaults to `lm
 
 Read `EXPLAINER.md` for the architecture and how the pieces fit together.
 
+Run the browser test bench:
+
+```bash
+python3 app/web_ui.py
+```
+
+Then open:
+
+```bash
+http://127.0.0.1:8000
+```
+
+If port `8000` is already in use, run:
+
+```bash
+python3 app/web_ui.py --port 8001
+```
+
+The UI can run normal answer tests through LM Studio, inspect retrieval-only results, and load the breaker-question prompts.
+
 Run the breaker-question set:
 
 ```bash
